@@ -1,4 +1,4 @@
-// fungsi biasa
+// fungsi void
 
 function sapa() {
     console.log("Halo, selamat datang!");
