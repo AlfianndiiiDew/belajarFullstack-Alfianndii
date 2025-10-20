@@ -1,14 +1,8 @@
 const validator = require('validator');
 const Contact = require('./contact.js');
-// Impor minimist untuk parsing argumen
 const args = require('minimist')(process.argv.slice(2));
 
-/**
- * =================================
- * FUNGSI HELPER & HANDLER
- * (Diambil dari kode refactor Anda)
- * =================================
- */
+
 
 async function getValidatedEmail(contact, promptMessage = "Masukkan email: ") {
     let email = '';
@@ -45,18 +39,10 @@ async function handleUpdate(contact) {
     console.log(`Kontak "${nama}" telah diupdate.`);
 }
 
-/**
- * =================================
- * FUNGSI UTAMA (MAIN)
- * =================================
- */
-
 async function main() {
     const contact = new Contact();
 
     try {
-        // args akan berisi { add: true } jika Anda menjalankan `npm test --add`
-        // args akan berisi { delete: true } jika Anda menjalankan `npm test --delete`
 
         if (args.add) {
             // Jika ada argumen --add, langsung jalankan handleAdd
@@ -91,7 +77,6 @@ async function main() {
     } catch (error) {
         console.error("Terjadi kesalahan:", error.message);
     } finally {
-        // Pastikan untuk menutup readline
         if (contact.close) {
             contact.close();
         } else {
@@ -100,5 +85,4 @@ async function main() {
     }
 }
 
-// Menjalankan fungsi utama
 main();
